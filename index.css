@@ -1,0 +1,442 @@
+/* ================================
+   پرچم — تمرین کدنویسی مبتدی
+================================ */
+
+:root {
+    --bg: #0f1220;
+    --panel: #171a2c;
+    --panel-2: #1e2238;
+    --border: #2c3152;
+    --text: #e8e9f3;
+    --muted: #9aa0c3;
+    --purple: #8b5cf6;
+    --green: #34d399;
+    --red: #f87171;
+    --amber: #fbbf24;
+    --cyan: #22d3ee;
+    --radius: 14px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Vazirmatn", "Segoe UI", Tahoma, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── هدر ── */
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 22px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    font-size: 34px;
+}
+
+.logo h1 {
+    font-size: 22px;
+    letter-spacing: 0.5px;
+}
+
+.logo p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.progress-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 220px;
+}
+
+.progress-track {
+    flex: 1;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--purple), var(--cyan));
+    transition: width 0.4s ease;
+}
+
+#progress-label {
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+/* ── نوار زبان ── */
+.lang-bar {
+    display: flex;
+    gap: 10px;
+    padding: 12px 22px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+}
+
+.lang-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--panel-2);
+    color: var(--muted);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+    white-space: nowrap;
+}
+
+.lang-btn:hover {
+    border-color: var(--purple);
+    color: var(--text);
+}
+
+.lang-btn.active {
+    background: linear-gradient(120deg, var(--purple), #6d28d9);
+    border-color: var(--purple);
+    color: #fff;
+    box-shadow: 0 4px 18px rgba(139, 92, 246, 0.35);
+}
+
+/* ── چیدمان اصلی ── */
+.layout {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 16px;
+    padding: 16px 22px;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── لیست تمرین‌ها ── */
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px;
+    position: sticky;
+    top: 16px;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 12px;
+    border-radius: 11px;
+    border: 1px solid transparent;
+    background: none;
+    color: var(--muted);
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 600;
+    text-align: right;
+    cursor: pointer;
+    transition: 0.2s;
+    width: 100%;
+}
+
+.task-item:hover {
+    background: rgba(139, 92, 246, 0.1);
+    color: var(--text);
+}
+
+.task-item.active {
+    background: rgba(139, 92, 246, 0.16);
+    border-color: var(--purple);
+    color: var(--text);
+}
+
+.task-item .check {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    font-size: 11px;
+    color: transparent;
+}
+
+.task-item.completed .check {
+    background: var(--green);
+    border-color: var(--green);
+    color: #06281d;
+}
+
+.task-item.completed .title {
+    text-decoration: line-through;
+    opacity: 0.75;
+}
+
+.task-item .title {
+    flex: 1;
+}
+
+/* ── پنل کار ── */
+.work-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+}
+
+.task-header {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+}
+
+.task-header h2 {
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.task-header p {
+    color: var(--muted);
+    font-size: 13.5px;
+    line-height: 1.9;
+}
+
+.hint-box {
+    margin-top: 10px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    color: var(--amber);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.btn-hint {
+    margin-top: 10px;
+}
+
+/* ── دکمه‌ها ── */
+.btn {
+    padding: 8px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--panel-2);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.15);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: wait;
+    transform: none;
+}
+
+.btn-run {
+    background: linear-gradient(120deg, #059669, var(--green));
+    border-color: transparent;
+    color: #04281c;
+}
+
+.btn-done {
+    background: linear-gradient(120deg, var(--purple), #7c3aed);
+    border-color: transparent;
+    color: #fff;
+}
+
+.btn-ghost {
+    background: transparent;
+}
+
+/* ── ویرایشگر ── */
+.editor-wrap {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.editor-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+}
+
+#editor-lang-tag {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--cyan);
+    letter-spacing: 1px;
+}
+
+.toolbar-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+#editor {
+    width: 100%;
+    min-height: 260px;
+    resize: vertical;
+    padding: 14px;
+    background: #0d0f1c;
+    border: none;
+    outline: none;
+    color: #d7e2ff;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    tab-size: 4;
+}
+
+/* ── خروجی ── */
+.output-wrap {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.output-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--muted);
+}
+
+.engine-note {
+    font-size: 11px;
+    color: var(--cyan);
+}
+
+#output {
+    padding: 14px;
+    min-height: 80px;
+    max-height: 260px;
+    overflow: auto;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 13.5px;
+    line-height: 1.8;
+    color: #c9f3dd;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+#output.error {
+    color: #fecaca;
+}
+
+#output.info {
+    color: var(--muted);
+}
+
+/* ── راه‌حل ── */
+.solution-box {
+    background: var(--panel);
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.solution-box summary {
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #c4b5fd;
+    user-select: none;
+}
+
+.solution-box summary:hover {
+    background: rgba(139, 92, 246, 0.08);
+}
+
+#solution-code {
+    padding: 14px;
+    border-top: 1px solid var(--border);
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 13.5px;
+    line-height: 1.8;
+    color: #d7e2ff;
+    overflow: auto;
+}
+
+/* ── فوتر ── */
+.footer {
+    padding: 14px 22px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+}
+
+/* پیام بارگذاری پایتون */
+.loading-note {
+    color: var(--amber) !important;
+}
+
+[hidden] {
+    display: none !important;
+}

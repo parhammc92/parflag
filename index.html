@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پرچم — تمرین کدنویسی مبتدی</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- ═══════════ هدر ═══════════ -->
+    <header class="topbar">
+        <div class="logo">
+            <span class="logo-icon">🚩</span>
+            <div>
+                <h1>پرچم</h1>
+                <p>تمرین کدنویسی مبتدی — یاد بگیر، بنویس، اجرا کن!</p>
+            </div>
+        </div>
+
+        <div class="progress-box" title="پیشرفت تو">
+            <div class="progress-track">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <span id="progress-label">۰ از ۰ تمرین</span>
+        </div>
+
+        <a href="/quiz" class="btn btn-done quiz-link" title="بات تعیین سطح">
+            🎯 آزمون تعیین سطح
+        </a>
+    </header>
+
+    <!-- ═══════════ انتخاب زبان ═══════════ -->
+    <nav class="lang-bar" id="lang-bar">
+        <button class="lang-btn active" data-lang="python">
+            <span class="lang-emoji">🐍</span> Python
+        </button>
+        <button class="lang-btn" data-lang="javascript">
+            <span class="lang-emoji">🟨</span> JavaScript
+        </button>
+        <button class="lang-btn" data-lang="cpp">
+            <span class="lang-emoji">⚙️</span> C++
+        </button>
+        <button class="lang-btn" data-lang="java">
+            <span class="lang-emoji">☕</span> Java
+        </button>
+    </nav>
+
+    <!-- ═══════════ بدنه ═══════════ -->
+    <main class="layout">
+
+        <!-- لیست تمرین‌ها -->
+        <aside class="task-list" id="task-list">
+            <!-- با جاوااسکریپت پر می‌شود -->
+        </aside>
+
+        <!-- پنل تمرین -->
+        <section class="work-panel">
+
+            <div class="task-header">
+                <h2 id="task-title">—</h2>
+                <p id="task-desc">—</p>
+                <div class="hint-box" id="hint-box" hidden>
+                    💡 <span id="hint-text"></span>
+                </div>
+                <button class="btn btn-hint" id="hint-btn">💡 راهنما</button>
+            </div>
+
+            <div class="editor-wrap">
+                <div class="editor-toolbar">
+                    <span id="editor-lang-tag">Python</span>
+                    <div class="toolbar-actions">
+                        <button class="btn btn-run" id="run-btn">
+                            ▶️ اجرا
+                        </button>
+                        <button class="btn btn-ghost" id="reset-btn">
+                            ↩️ بازگردانی کد اولیه
+                        </button>
+                        <button class="btn btn-ghost" id="solution-btn">
+                            👀 دیدن راه‌حل
+                        </button>
+                        <button class="btn btn-done" id="done-btn" hidden>
+                            ✅ تمامش کردم!
+                        </button>
+                    </div>
+                </div>
+
+                <textarea
+                    id="editor"
+                    spellcheck="false"
+                    dir="ltr"
+                    aria-label="ویرایشگر کد"></textarea>
+            </div>
+
+            <div class="output-wrap">
+                <div class="output-header">
+                    <span>🖥️ خروجی</span>
+                    <span id="engine-note" class="engine-note"></span>
+                </div>
+                <pre id="output" dir="ltr">برای دیدن خروجی، دکمه‌ی «اجرا» را بزن.</pre>
+            </div>
+
+            <!-- جعبه‌ی راه‌حل -->
+            <details class="solution-box" id="solution-box" hidden>
+                <summary>📝 راه‌حل پیشنهادی</summary>
+                <pre id="solution-code" dir="ltr"></pre>
+            </details>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        ساخته‌شده برای پروژه‌ی مدرسه 💜 — بدون سرور، فقط مرورگر
+    </footer>
+
+    <!-- موتور اجرای پایتون (تنها موقع اجرا بارگذاری می‌شود) -->
+    <script>
+        var PYODIDE_URL = "https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js";
+    </script>
+    <script src="app.js"></script>
+
+</body>
+</html>

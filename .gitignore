@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# داده و لاگ (محلی)
+instance/
+
+# فایل‌های شخصی کاربر (صفحه‌ی ذخیره‌شده‌ی گوگل)
+google.png.html
+google.png_files/
