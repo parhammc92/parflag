@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آزمون تعیین سطح | پرچم</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="quiz.css">
+</head>
+<body class="quiz-body">
+
+    <header class="topbar">
+        <div class="logo">
+            <span class="logo-icon">🤖</span>
+            <div>
+                <h1>بات تعیین سطح</h1>
+                <p>۸ سؤال تطبیقی جواب می‌دهی، سطحت را می‌گویم!</p>
+            </div>
+        </div>
+
+        <a href="/" class="btn btn-ghost back-link">← برگرد به تمرین‌ها</a>
+    </header>
+
+    <main class="quiz-layout">
+
+        <!-- ستون چت با بات -->
+        <section class="chat-panel">
+
+            <div class="chat-scroll" id="chat-scroll">
+                <div class="chat-msg bot">
+                    <span class="chat-avatar">🤖</span>
+                    <div class="chat-bubble">
+                        سلام! من باتِ تعیین‌سطح پرچم هستم 🎯<br>
+                        ۸ سؤال ازت می‌پرسم — جواب‌های درست پشت‌سرهم
+                        سؤال‌ها را سخت‌تر می‌کنه و اشتباه‌ها آسون‌تر.
+                        آخرش می‌گم در چه سطحی هستی!
+                    </div>
+                </div>
+
+                <!-- پیام‌ها با جاوااسکریپت اضافه می‌شوند -->
+            </div>
+
+            <div class="chat-progress" id="chat-progress" hidden>
+                <span id="progress-text">سؤال ۱ از ۸</span>
+                <div class="progress-track small">
+                    <div class="progress-fill" id="quiz-progress-fill"></div>
+                </div>
+                <span class="tier-tag" id="tier-tag">سطح: آسان</span>
+            </div>
+
+        </section>
+
+        <!-- کارت نتیجه -->
+        <aside class="result-panel" id="result-panel" hidden>
+            <div class="result-card">
+                <div class="result-badge" id="result-badge">🥇</div>
+                <h2 id="result-level">پیشرفته</h2>
+                <p id="result-score">۸ از ۸ درست</p>
+                <div class="result-msg" id="result-msg"></div>
+                <div class="result-recommend" id="result-recommend"></div>
+                <div class="result-actions">
+                    <a href="/" class="btn btn-run">برو تمرین کن 💪</a>
+                    <button class="btn btn-ghost" id="retry-btn">آزمون دوباره 🔁</button>
+                </div>
+            </div>
+
+            <div class="history-card">
+                <h3>📋 سابقه‌ی آزمون‌ها</h3>
+                <div id="history-list">هنوز آزمونی نداری.</div>
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- بنر وقتی سرور اجرا نیست -->
+    <div class="server-banner" id="server-banner" hidden>
+        ⚠️ سرور اجرا نیست! در فولدر پروژه دستور <code>python server.py</code> را اجرا کن
+        و صفحه را دوباره باز کن (آدرس: <code>http://localhost:5001/quiz</code>).
+    </div>
+
+    <footer class="footer">
+        سؤال‌ها سمت سرور تصحیح می‌شوند — تقلب ممکن نیست 😉
+    </footer>
+
+    <script src="quiz.js"></script>
+</body>
+</html>

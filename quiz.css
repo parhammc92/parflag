@@ -1,0 +1,343 @@
+/* ================================
+   بات تعیین سطح — استایل چت
+================================ */
+
+.quiz-body {
+    background: var(--bg);
+}
+
+.back-link {
+    text-decoration: none;
+}
+
+/* ── چیدمان ── */
+.quiz-layout {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 16px;
+    padding: 16px 22px;
+    align-items: start;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+@media (max-width: 800px) {
+    .quiz-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── پنل چت ── */
+.chat-panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    min-height: 60vh;
+    overflow: hidden;
+}
+
+.chat-scroll {
+    flex: 1;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    max-height: 65vh;
+}
+
+.chat-msg {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    animation: msgIn 0.25s ease;
+}
+
+@keyframes msgIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.chat-msg.user {
+    flex-direction: row-reverse;
+}
+
+.chat-avatar {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--purple), var(--cyan));
+    font-size: 19px;
+}
+
+.chat-msg.user .chat-avatar {
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    font-size: 16px;
+}
+
+.chat-bubble {
+    max-width: 78%;
+    padding: 11px 15px;
+    border-radius: 16px;
+    border-bottom-right-radius: 5px;
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    font-size: 13.5px;
+    line-height: 1.9;
+    overflow-wrap: anywhere;
+}
+
+.chat-msg.user .chat-bubble {
+    background: linear-gradient(130deg, rgba(139, 92, 246, 0.25), rgba(109, 40, 217, 0.15));
+    border-color: rgba(139, 92, 246, 0.4);
+    border-radius: 16px;
+    border-bottom-left-radius: 5px;
+}
+
+.chat-bubble code,
+.chat-bubble pre {
+    direction: ltr;
+    text-align: left;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 13px;
+}
+
+.chat-bubble pre {
+    margin: 8px 0 2px;
+    padding: 10px 12px;
+    background: #0d0f1c;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow-x: auto;
+    white-space: pre;
+    color: #d7e2ff;
+    line-height: 1.7;
+}
+
+/* گزینه‌های سؤال */
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.quiz-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 13.5px;
+    text-align: right;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.opt-num {
+    flex-shrink: 0;
+    font-weight: 800;
+    color: var(--cyan);
+}
+
+.opt-text {
+    flex: 1;
+    min-width: 0;
+    text-align: right;
+    unicode-bidi: plaintext;
+    overflow-wrap: anywhere;
+}
+
+.quiz-option:hover:not(:disabled) {
+    border-color: var(--purple);
+    background: rgba(139, 92, 246, 0.12);
+}
+
+.quiz-option:disabled {
+    cursor: default;
+    opacity: 0.6;
+}
+
+.quiz-option.chosen {
+    border-color: var(--purple);
+    background: rgba(139, 92, 246, 0.2);
+    opacity: 1;
+}
+
+.quiz-option.correct-reveal {
+    border-color: var(--green);
+    background: rgba(52, 211, 153, 0.15);
+    opacity: 1;
+}
+
+/* کد زبان (دکمه‌های شروع) */
+.lang-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 10px;
+    max-width: 320px;
+}
+
+/* انتخاب‌های کاربر در حباب خودش */
+.user-choice-code {
+    direction: ltr;
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 12.5px;
+    white-space: pre-wrap;
+}
+
+/* ── نوار پیشرفت چت ── */
+.chat-progress {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.progress-track.small {
+    flex: 1;
+    height: 7px;
+}
+
+.tier-tag {
+    color: var(--cyan);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* ── پنل نتیجه ── */
+.result-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: sticky;
+    top: 16px;
+}
+
+.result-card {
+    background: var(--panel);
+    border: 1px solid rgba(139, 92, 246, 0.45);
+    border-radius: var(--radius);
+    padding: 22px 18px;
+    text-align: center;
+    animation: msgIn 0.35s ease;
+}
+
+.result-badge {
+    font-size: 54px;
+    line-height: 1;
+}
+
+.result-card h2 {
+    margin-top: 8px;
+    font-size: 24px;
+}
+
+#result-score {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.result-msg {
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: rgba(139, 92, 246, 0.09);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    font-size: 12.5px;
+    line-height: 1.9;
+    color: #c4b5fd;
+    text-align: right;
+}
+
+.result-recommend {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.9;
+}
+
+.result-actions {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.result-actions .btn {
+    text-decoration: none;
+    text-align: center;
+}
+
+/* سابقه */
+.history-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+}
+
+.history-card h3 {
+    font-size: 13.5px;
+    margin-bottom: 10px;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 7px 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.history-item .hist-level {
+    font-weight: 800;
+}
+
+.hist-beginner { color: #fbbf24; }
+.hist-intermediate { color: #c4b5fd; }
+.hist-advanced { color: var(--green); }
+
+/* بنر سرور خاموش */
+.server-banner {
+    margin: 0 22px 16px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: rgba(248, 113, 113, 0.12);
+    border: 1px solid rgba(248, 113, 113, 0.4);
+    color: #fecaca;
+    font-size: 13px;
+    line-height: 2;
+}
+
+.server-banner code {
+    font-family: "Consolas", monospace;
+    direction: ltr;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2px 7px;
+    border-radius: 6px;
+}
